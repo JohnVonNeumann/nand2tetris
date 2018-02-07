@@ -7,6 +7,9 @@
  * Or gate:
  * out = 1 if (a == 1 or b == 1)
  *       0 otherwise
+ *
+ * if both are 0 then 0, but if one is 1, then double the value
+ you need to create a not somewhere whenever a cetain interaction occurs (i dunno which one yet lol) because the only values that will hold up are the double zeros, everything else will flip, maybe a nand at the start
  */
 
 CHIP Or {
@@ -14,5 +17,7 @@ CHIP Or {
     OUT out;
 
     PARTS:
-    // Put your code here:
+    Nand(a=a, b=a, out=nandouta);
+    Nand(a=b, b=b, out=nandoutb);
+    Nand(a=nandouta, b=nandoutb, out=out);
 }
