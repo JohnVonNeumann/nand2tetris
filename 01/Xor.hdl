@@ -6,6 +6,8 @@
 /**
  * Exclusive-or gate:
  * out = not (a == b)
+ * if a!=b then output 1
+ * else 0
  */
 
 CHIP Xor {

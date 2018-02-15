@@ -7,6 +7,21 @@
  * Multiplexor:
  * out = a if sel == 0
  *       b otherwise
+ * The Mux is used with a selector bit as a method of making decisions on output
+ * for example should the sel (selector) bit be a 0, then a should output.
+ * Otherwise, the chip should output b.
+ * 
+ * the input vals dont matter, the mux gives no fucks at all about what is IN the 
+ * inputs, it just wants to guarantee that when the selector bit is chosen, it outputs
+ * the correct input
+ *
+ * you can perhaps filter first off to see if the signals are the same
+ * that way you only have to deal with a single number as it represents both options
+ * Working backwards
+ * if sel = 0 output a, if sel = 1 output b
+ * so we can use the and statement to finish off the decision 
+ *
+ * I struggled with this one so after playing with it for a few train rides I seeked help, eventually it made sense, helped me solve the DMux one, showed me how the other person was handling it and what their thought process looked like, I had some holes, in particular I wasn't reading the implementation details from the book and wasn't creating a good enough truth table for myself.  
  */
 
 CHIP Mux {
@@ -14,5 +29,14 @@ CHIP Mux {
     OUT out;
 
     PARTS:
-    // Put your code here:
+    Not(in=sel, out=nsel);
+    And(a=sel, b=b, out=c1);
+    And(a=nsel, b=a, out=c2);
+    Or(a=c1, b=c2, out=out);
+    
+    /*Not(in=sel, out=notsel);
+    And(a=a, b=sel, out=aAndSel);
+    And(a=notsel, b=b, out=bAndNotSel);
+    Or(a=aAndSel, b=bAndNotSel, out=out);
+    */
 }
