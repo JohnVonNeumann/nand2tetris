@@ -11,6 +11,7 @@
 
 * read the book high level descriptions of the chips, they help provide a better level of understanding rather than trying to simply brute force the answer, it may work at the start but as the amount of moving parts goes up, youll suffer. in particular, focus on the chip function provided, as it will ususally explain the options that can be output fairly cleanly
 
+* I halfway expected there to be a cleaner syntax for building mutlibit buses to be fair, I was wondering why they called the implementations of them "tedious", now I know! At least my vim skills get better and I learn the implementation of the gates well too.
 
 #### for future modules and symlinking them
 > ln -fP ~/programs/nand2tetris/projects/01/* ~/code/learn/nand2tetris/01
